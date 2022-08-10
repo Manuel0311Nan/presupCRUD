@@ -14,10 +14,56 @@ $valor = doQuery($conexion, $query, $array);
 $total = $valor->rowCount() + 1;
 
 ?>
-<body class="bg-danger">
-    <main class="container-lg bg-white rounded my-2 p-5">
+<body class="bg-danger container">
+    <form class="bg-light mt-4 radius" action="registro.php" method="post">
+      <div class="form-row container">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4 text-danger">Empresa</label>
+          <input type="text" class="form-control" id="empresa">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Fecha</label>
+          <input type="password" class="form-control" id="fecha">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    <!-- <main class="container-lg bg-white rounded my-2 p-5">
         <div class="d-flex justify-content-end">
-            <a href="./lista" class="btn btn-danger">LISTA</a>
+            <a href="./lista.php" class="btn btn-danger">LISTA</a>
         </div>
         <form action="registro.php" method="post">
         <div class="row mx-0 justify-content-end my-3">
@@ -79,7 +125,7 @@ $total = $valor->rowCount() + 1;
                 <button type="submit" name="register" class="btn btn-danger w-100 btn-lg d-flex align-items-center justify-content-center">Generar presupuesto<span class="material-icons ms-2">save</span></button>
             </div>
         </div>
-    </main>
+    </main> -->
 </body>
 
 </html>
