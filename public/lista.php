@@ -46,24 +46,20 @@ $total = $valor->rowCount() + 1;
             <tbody>
             <?php
                 while($p = $valor->fetch(PDO::FETCH_ASSOC))
-                {
-                    $d = new DateTime($p["fecha_generacion"]);
-                    echo '
-                        <tr>
-						
-                            <td class="fw-bold text-center">' . $p["num_presupuesto"] . '</td>
-                            <td class=" text-center">' . $p["titulo"] . '</td>
-                            <td class=" text-center">' . $p["empresa"] . '</td>
-                            <td class=" text-center">' . $p["precio"] . '</td>
-                            <td class=" text-center">' . $d->format('d/m/Y') . '</td>
-                            <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">file_open</span></a></td>
-                            <td class=" text-center"><a class="text-danger pt-2"  href="../public/edit.php""><span class="material-icons">edit</span></a>
-							<a class="text-danger pt-2" target="_blank" href="/src/edit.php"><span class="material-icons">delete</span></a></td>
-
-                        </tr>
-                    ';
-                }
-            ?>
+                {?>
+                <?php
+                    $d = new DateTime($p["fecha_generacion"]);?>
+                    <tr>
+                        <td class="fw-bold text-center"> <?php echo $p['num_presupuesto']; ?> </td>
+                        <td class=" text-center"><?php echo $p['titulo']; ?></td>
+                        <td class=" text-center"><?php echo $p['empresa']; ?></td>
+                        <td class=" text-center"><?php echo $p['precio']; ?></td>
+                        <td class=" text-center"><?php echo $p['fecha_generacion']; ?></td>
+                        <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php"><span class="material-icons">file_open</span></a></td>
+                        <td class=" text-center"><a class="text-danger pt-2"  href="../public/edit.php"><span class="material-icons">edit</span></a>
+                        <a class="text-danger pt-2" target="_blank" id=<?php echo $p['id'];?>  href="../public/delete.php"><span class="material-icons">delete</span></a></td>
+                    </tr>
+                    <?php } ?>
             </tbody>
         </table>
     </main>
@@ -341,6 +337,5 @@ $(document).ready(function() {
             //         });
 
             // },
-        });
-});
-</script>
+    })});
+    </script>
