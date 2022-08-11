@@ -1,46 +1,46 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 session_start();
 // !isset($_SESSION["auth"]) || $_SESSION["auth"] == false ? header('Location: ./parts/login.php') : '';
 require_once(dirname(__FILE__) . "/../config/config.php");
 require_once(dirname(__FILE__) . "/../src/functions.php");
-require_once(dirname(__FILE__) . "./head.php");
-require_once(dirname(__FILE__) . "/parts/loading.php");
+require_once(dirname(__FILE__) . "/head.php");
+require_once(dirname(__FILE__) . "/registro.php");
+// require_once(dirname(__FILE__) . "/parts/loading.php");
+
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
-$query = "SELECT * FROM presupuestos";
+$query = "SELECT * FROM presupuestos ";
 $array = array();
 $valor = doQuery($conexion, $query, $array);
-
+$total = $valor->rowCount() + 1;
 ?>
 
 <style>
     .bg-light-blue
     {
-    background: #FFCCCB;
+    background: #ff9999;
     }
 </style>
 
 <body class="bg-light-blue">
 <div class="rounded my-3">
-                    <h2 class="text-center fw-normal">Visualiza tus <span class="fw-bold">presupuestos</span></h2>
-                    <h5 class="text-center text-muted fw-light mb-2">Comience a operar con alguna de nuestras herramientas</h5>
-                </div>
+    <h2 class="text-center fw-normal">Visualiza tus <span class="fw-bold">presupuestos</span></h2>
+    <h5 class="text-center text-muted fw-light mb-2">Comience a operar con alguna de nuestras herramientas</h5>
+</div>
     <main class="container-lg bg-white rounded p-5">
-        <!-- <div class="d-flex my-2 justify-content-end">
-            <a href="./index" class="btn btn-danger">GENERADOR</a>
-        </div> -->
-        <table class="table table-striped">
+        <div class="d-flex my-2 justify-content-end">
+            <a href="./index.php" class="btn btn-danger">GENERADOR</a>
+        </div>
+        <table class="table table-striped display">
             <thead>
             <tr>
                     <th class=" text-center">Presupuesto</th>
-                    <th>Titulo</th>
-                    <th>Empresa</th>
-                    <th>Precio</th>
-                    <th>Fecha</th>
-                    <th>Ver</th>
-					<th>Acciones</th>
+                    <th class=" text-center">Titulo</th>
+                    <th class=" text-center">Empresa</th>
+                    <th class=" text-center">Precio</th>
+                    <th class=" text-center">Fecha</th>
+                    <th class=" text-center">Ver</th>
+					<th class=" text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,11 +52,12 @@ $valor = doQuery($conexion, $query, $array);
                         <tr>
 						
                             <td class="fw-bold text-center">' . $p["num_presupuesto"] . '</td>
-                            <td>' . $p["titulo"] . '</td>
-                            <td>' . $p["empresa"] . '</td>
-                            <td>' . $p["precio"] . '</td>
-                            <td>' . $d->format('d/m/Y') . '</td>
-                            <td><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">edit</span></a>
+                            <td class=" text-center">' . $p["titulo"] . '</td>
+                            <td class=" text-center">' . $p["empresa"] . '</td>
+                            <td class=" text-center">' . $p["precio"] . '</td>
+                            <td class=" text-center">' . $d->format('d/m/Y') . '</td>
+                            <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">file_open</span></a></td>
+                            <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">edit</span></a>
 							<a class="text-danger pt-2" target="_blank" href="/src/edit.php"><span class="material-icons">delete</span></a></td>
 
                         </tr>
@@ -280,7 +281,7 @@ $(document).ready(function() {
             buttons: [{
                 extend: 'excel',
                 text: 'Exportar en Excel',
-                className: 'btn btn-success',
+                className: 'btn btn-success col-md-6',
                 // exportOptions: {
                 //     columns: [1,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20]
                 // }

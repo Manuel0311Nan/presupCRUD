@@ -1,0 +1,13 @@
+{
+    "name": "crud/crudpresupuestos",
+    "description": "Proyecto para introducir presupuestos",
+    "require": {
+        "phpoffice/phpword": "^0.18.3"
+    },
+    "authors": [
+        {
+            "name": "Manuel Alcázar",
+            "email": "manuzz3112@gmail.com"
+        }
+    ]
+}

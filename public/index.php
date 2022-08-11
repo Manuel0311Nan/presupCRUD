@@ -4,14 +4,15 @@ session_start();
 require_once(dirname(__FILE__) . "/../config/config.php");
 require_once(dirname(__FILE__) . "/../src/functions.php");
 require_once(dirname(__FILE__) . "/head.php");
+require_once(dirname(__FILE__) . "/registro.php");
 // require_once(dirname(__FILE__) . "/parts/loading.php");
 
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
-$query = "SELECT * FROM presupuestos";
-$array = array();
-$valor = doQuery($conexion, $query, $array);
-$total = $valor->rowCount() + 1;
+// $query = "SELECT * FROM presupuestos";
+// $array = array();
+// $valor = doQuery($conexion, $query, $array);
+// $total = $valor->rowCount() + 1;
 
 ?>
 <body class="container fw-bold" style="background-color:#ff9999 ;">
@@ -22,29 +23,32 @@ $total = $valor->rowCount() + 1;
 </div>
 <img class="rounded-circle img-fluid imag " src="../public/assets/img/logo.jpeg" alt="" >
 </div>
-    <form class="bg-transparent mt-4" action="registro.php" method="post">
+<div class="d-flex my-2 justify-content-end">
+            <a href="./lista.php" class="btn btn-dark">LISTADO</a>
+        </div>
+    <form class="bg-transparent mt-4" action="registro.php" method="post" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">
       <div class="form-group col-md-7">
-        <label for="inputAddress">Nº Presupuesto</label>
-        <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder=""  readonly disabled>
+        <label for="num_presupuesto">Nº Presupuesto</label>
+        <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="">
       </div>
       <div class="form-group col-md-2">
-          <label for="inputPassword4">Fecha</label>
+          <label for="fecha">Fecha</label>
           <input type="date" class="form-control" id="fecha" name="fecha_generacion" autofocus>
         </div>
       </div>
       <div class="form-row row container justify-content-md-center mt-2">
       <div class="form-group col-md-5">
-          <label for="inputEmail4 text-danger">Empresa</label>
+          <label for=" empresa">Empresa</label>
           <input type="text" class="form-control" id="empresa" name="empresa" autofocus>
         </div>
       <div class="form-group col-md-4">
-        <label for="inputAddress2">Título</label>
+        <label for="titulo">Título</label>
         <input type="text" class="form-control" id="titulo" placeholder="" name="titulo" autofocus>
       </div>
       <div class="form-group col-md-3">
-          <label for="inputEmail4 text-danger">Precio</label>
-          <input type="text" class="form-control" id="precio" name="precio" autofocus>
+          <label for=" precio">Precio</label>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus>
         </div>
       </div>
       <div class="form-row row justify-content-md-center">
@@ -58,7 +62,7 @@ $total = $valor->rowCount() + 1;
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 ">Generar Presupuesto</button>
+      <button name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
       </div>
     </form>
 </body>
