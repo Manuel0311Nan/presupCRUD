@@ -10,8 +10,8 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 $query = "SELECT * FROM presupuestos ";
-$array = array();
-$valor = doQuery($conexion, $query, $array);
+$valor = $conexion -> prepare($query);
+$valor -> execute();
 $total = $valor->rowCount() + 1;
 ?>
 
@@ -57,7 +57,7 @@ $total = $valor->rowCount() + 1;
                             <td class=" text-center">' . $p["precio"] . '</td>
                             <td class=" text-center">' . $d->format('d/m/Y') . '</td>
                             <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">file_open</span></a></td>
-                            <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php""><span class="material-icons">edit</span></a>
+                            <td class=" text-center"><a class="text-danger pt-2"  href="../public/edit.php""><span class="material-icons">edit</span></a>
 							<a class="text-danger pt-2" target="_blank" href="/src/edit.php"><span class="material-icons">delete</span></a></td>
 
                         </tr>

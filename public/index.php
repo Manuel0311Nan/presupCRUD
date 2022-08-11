@@ -18,8 +18,8 @@ $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 <body class="container fw-bold" style="background-color:#ff9999 ;">
 <div class=" d-flex justify-content-center align-items-center">
   <div class="mr-3">
-<h1 class="text-center">Presupuestos</h1>
-<p class="text-center ">Introduce todos los datos para recibir un PDF</p>
+<h1 class="text-center">Creación de presupuestos</h1>
+<p class="text-center ">Rellena todos los campos disponibles</p>
 </div>
 <img class="rounded-circle img-fluid imag " src="../public/assets/img/logo.jpeg" alt="" >
 </div>
