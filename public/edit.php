@@ -9,21 +9,12 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
-// if(isset($_GET['id'])){
-//     $id = $_GET ['id'];
-// $query = "SELECT * FROM presupuestos WHERE id = $id";
-
-// $array = array();
-// $valor = doQuery($conexion, $query, $array);
-// $total = $valor->rowCount() + 1;
-//         $row = mysqli_fetch_array($result);
-//         $titulo = $row['titulo'];
-//         $fecha_generacion = $row['fecha_generacion'];
-//         $empresa = $row['empresa'];
-//         $precio = $row['precio'];
-//         $solucion = $row['solucion'];
-//         $solicitud = $row['solicitud'];
-// }
+if(isset($_GET['id'])){
+$id = $_GET ['id'];
+$sql = "SELECT * FROM presupuestos WHERE id= $id";
+$array = array();
+$valor = doQuery($conexion, $sql, $array);
+}
 if(isset($_POST['update'])){
     $id = $_GET ['id'];
     $titulo = ucfirst(trim($_POST['titulo']));
@@ -32,14 +23,13 @@ if(isset($_POST['update'])){
     $precio = $_POST['precio'];
     $solucion = $_POST['solucion'];
     $solicitud = $_POST['solicitud'];
-
     $query = $conexion->prepare("UPDATE `presupuestos` SET  `titulo`= ':titulo',`fecha_generacion`=':fecha_generacion',`empresa`=':empresa',`precio`=':precio' WHERE id = $id");
     $query->bindParam(':num_presupuesto', $num_presupuesto);
     $query->bindParam(':titulo', $titulo);
     $query->bindParam(':fecha_generacion', $fecha_generacion);
     $query->bindParam(':empresa', $empresa);
     $query->bindParam(':precio', $precio);
-    // $query->execute();
+    // $query->execute(); //se rompe con esta linea
     header('Location: lista.php');
 }
 
@@ -55,12 +45,16 @@ if(isset($_POST['update'])){
 <div class="d-flex my-2 justify-content-end">
             <a href="./lista.php" class="btn btn-dark">LISTADO</a>
         </div>
-    <form class="bg-transparent mt-4" action="edit.php"  method="POST" target="./lista.php">
+    <form class="bg-transparent mt-4" action="edit.php?id=<?php echo  $_GET['id']; ?>"  method="POST" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">
       <div class="form-group col-md-7">
+      <?php
+                while($p = $valor->fetch(PDO::FETCH_ASSOC))
+                {?>
         <label for="num_presupuesto">Nº Presupuesto</label>
-        <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="">
+        <input value="<?php echo $p['num_presupuesto']; ?>"  class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" readonly>
       </div>
+      <?php } ?>
       <div class="form-group col-md-2">
           <label for="fecha">Fecha</label>
           <input type="date" class="form-control" id="fecha" name="fecha_generacion" autofocus>

@@ -9,6 +9,7 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
+
 $query = "SELECT * FROM presupuestos ";
 $valor = $conexion -> prepare($query);
 $valor -> execute();
@@ -27,11 +28,11 @@ $total = $valor->rowCount() + 1;
     <h2 class="text-center fw-normal">Visualiza tus <span class="fw-bold">presupuestos</span></h2>
     <h5 class="text-center text-muted fw-light mb-2">Comience a operar con alguna de nuestras herramientas</h5>
 </div>
-    <main class="container-lg bg-white rounded p-5">
+    <main class="container bg-white rounded p-5">
         <div class="d-flex my-2 justify-content-end">
-            <a href="./index.php" class="btn btn-danger">GENERADOR</a>
+            <a href="./index.php" class="btn btn-danger col-12 col-md-3 col-lg-2">GENERADOR</a>
         </div>
-        <table class="table table-striped display">
+        <table class="table table-striped container">
             <thead>
             <tr>
                     <th class=" text-center">Presupuesto</th>
@@ -53,11 +54,11 @@ $total = $valor->rowCount() + 1;
                         <td class="fw-bold text-center"> <?php echo $p['num_presupuesto']; ?> </td>
                         <td class=" text-center"><?php echo $p['titulo']; ?></td>
                         <td class=" text-center"><?php echo $p['empresa']; ?></td>
-                        <td class=" text-center"><?php echo $p['precio']; ?></td>
+                        <td class=" text-center"><?php echo $p['precio']; ?> €</td>
                         <td class=" text-center"><?php echo $p['fecha_generacion']; ?></td>
                         <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php"><span class="material-icons">file_open</span></a></td>
-                        <td class=" text-center"><a class="text-danger pt-2"  href="../public/edit.php"><span class="material-icons">edit</span></a>
-                        <a class="text-danger pt-2" target="_blank" id=<?php echo $p['id'];?>  href="../public/delete.php"><span class="material-icons">delete</span></a></td>
+                        <td class=" text-center"> <a class="text-danger pt-2"  href="../public/edit.php?id=<?php echo $p['id'];?>"> <span class="material-icons">edit</span></a>
+                        <a name="delete" class="text-danger pt-2" target="_blank"  href="../public/delete.php?id=<?php echo $p['id'];?> "><span class="material-icons">delete</span></a></td>
                     </tr>
                     <?php } ?>
             </tbody>

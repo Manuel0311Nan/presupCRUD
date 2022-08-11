@@ -9,10 +9,10 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
-// $query = "SELECT * FROM presupuestos";
-// $array = array();
-// $valor = doQuery($conexion, $query, $array);
-// $total = $valor->rowCount() + 1;
+$query = "SELECT * FROM presupuestos";
+$array = array();
+$valor = doQuery($conexion, $query, $array);
+$total = $valor->rowCount() + 1;
 
 ?>
 <body class="container fw-bold" style="background-color:#ff9999 ;">
