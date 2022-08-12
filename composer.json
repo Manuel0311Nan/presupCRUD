@@ -2,7 +2,8 @@
     "name": "crud/crudpresupuestos",
     "description": "Proyecto para introducir presupuestos",
     "require": {
-        "phpoffice/phpword": "^0.18.3"
+        "phpoffice/phpword": "^0.18.3",
+        "spipu/html2pdf": "^5.2"
     },
     "authors": [
         {
