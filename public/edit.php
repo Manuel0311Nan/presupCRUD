@@ -33,16 +33,31 @@ if(isset($_POST['update'])){
 }
 
 ?>
-<body class="container fw-bold" style="background-color:#ff9999 ;">
-<div class=" d-flex justify-content-center align-items-center">
+<style>
+      *{
+        font-family: 'Roboto', sans-serif;
+    }
+  .data{
+    background-color:#8D99AE;
+}
+.boton{
+  background-color: #2B2D42;
+  color: #EDF2F4;
+}
+.boton:hover{
+    color: #EDF2F4;
+}
+</style>
+<body class="container fw-bold data" >
+<div class=" d-flex justify-content-center align-items-center bg-data">
   <div class="mr-3">
 <h1 class="text-center">Edición de presupuestos</h1>
 <p class="text-center ">Edita todos los campos que necesites y generaremos un nuevo PDF</p>
 </div>
 <img class="rounded-circle img-fluid imag " src="../public/assets/img/logo.jpeg" alt="" >
 </div>
-<div class="d-flex my-2 justify-content-end">
-            <a href="./lista.php" class="btn btn-dark">LISTADO</a>
+<div class="d-flex my-2 justify-content-end col-12">
+            <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
         </div>
     <form class="bg-transparent mt-4" action="edit.php?id=<?php echo  $_GET['id']; ?>"  method="POST" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">

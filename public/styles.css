@@ -1,5 +1,20 @@
+:root {
+    --main-color: #8D99AE;
+    --second-color: #EDF2F4;
+    --btn-color: #2B2D42;
+    --btn-sec-color: #D90429;
+    --extra-color: #EF233C;
+    --secextra-color: #EE8B98;
+
+  }
+  
+
 .imag{
     width: 120px;
     height: 120px;
     margin-left: 5px;
+}
+#data{
+    background-color:#8D99AE;
+    color: aqua;
 }

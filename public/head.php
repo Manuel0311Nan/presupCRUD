@@ -18,6 +18,9 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.bootstrap5.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css"/>
   <link rel="stylesheet" href="./styles.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style> 
   <!-- CSS from LIB's -->
   <!-- Pure CSS -->
   <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->

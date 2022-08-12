@@ -15,7 +15,22 @@ $valor = doQuery($conexion, $query, $array);
 $total = $valor->rowCount() + 1;
 
 ?>
-<body class="container fw-bold" style="background-color:#ff9999 ;">
+<style>
+      *{
+        font-family: 'Roboto', sans-serif;
+    }
+  .data{
+    background-color:#8D99AE;
+}
+.boton{
+  background-color: #2B2D42;
+  color: #EDF2F4;
+}
+.boton:hover{
+    color: #EDF2F4;
+}
+</style>
+<body class="container fw-bold data ">
 <div class=" d-flex justify-content-center align-items-center">
   <div class="mr-3">
 <h1 class="text-center">Creación de presupuestos</h1>
@@ -24,7 +39,7 @@ $total = $valor->rowCount() + 1;
 <img class="rounded-circle img-fluid imag " src="../public/assets/img/logo.jpeg" alt="" >
 </div>
 <div class="d-flex my-2 justify-content-end">
-            <a href="./lista.php" class="btn btn-dark">LISTADO</a>
+            <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
         </div>
     <form class="bg-transparent mt-4" action="registro.php" method="post" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">

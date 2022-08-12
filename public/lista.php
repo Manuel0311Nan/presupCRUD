@@ -17,24 +17,37 @@ $total = $valor->rowCount() + 1;
 ?>
 
 <style>
-    .bg-light-blue
-    {
-    background: #ff9999;
+    *{
+        font-family: 'Roboto', sans-serif;
     }
+  .data{
+    background-color:#8D99AE;
+}
+.boton{
+  background-color: #2B2D42;
+  color: #EDF2F4
+}
+.boton:hover{
+    color: #EDF2F4;
+}
+.bg-table{
+    background-color: #EDF2F4;
+}
+
 </style>
 
-<body class="bg-light-blue">
+<body class="data">
 <div class="rounded my-3">
-    <h2 class="text-center fw-normal">Visualiza tus <span class="fw-bold">presupuestos</span></h2>
+    <h2 class="text-center fw-normal text-dark">Visualiza tus <span class="fw-bold">presupuestos</span></h2>
     <h5 class="text-center text-muted fw-light mb-2">Comience a operar con alguna de nuestras herramientas</h5>
 </div>
     <main class="container bg-white rounded p-5">
         <div class="d-flex my-2 justify-content-end">
-            <a href="./index.php" class="btn btn-danger col-12 col-md-3 col-lg-2">GENERADOR</a>
+            <a href="./index.php" class="btn boton fw-bold  col-12 col-md-3 col-lg-2">GENERADOR</a>
         </div>
         <table class="table table-striped container">
             <thead>
-            <tr>
+            <tr class=" text-dark">
                     <th class=" text-center">Presupuesto</th>
                     <th class=" text-center">Titulo</th>
                     <th class=" text-center">Empresa</th>
