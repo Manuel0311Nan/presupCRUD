@@ -72,7 +72,7 @@ var now = new Date();
 var day = ("0" + now.getDate()).slice(-2);
 var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-var hoy = now.getFullYear() + "-" + (month) + "-" + (day);
+var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
             $("#fecha").val(hoy)
 
 const  generateRandomString = (num) => {

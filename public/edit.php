@@ -9,27 +9,26 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
-if(isset($_GET['id'])){
 $id = $_GET ['id'];
 $sql = "SELECT * FROM presupuestos WHERE id= $id";
 $array = array();
 $valor = doQuery($conexion, $sql, $array);
-}
+
 if(isset($_POST['update'])){
     $id = $_GET ['id'];
-    $titulo = ucfirst(trim($_POST['titulo']));
+    $titulo =trim($_POST['titulo']);
     $fecha_generacion = $_POST['fecha_generacion'];
-    $empresa = ucfirst(trim($_POST['empresa']));
+    $empresa = trim($_POST['empresa']);
     $precio = $_POST['precio'];
     $solucion = $_POST['solucion'];
     $solicitud = $_POST['solicitud'];
-    $query = $conexion->prepare("UPDATE `presupuestos` SET  `titulo`= ':titulo',`fecha_generacion`=':fecha_generacion',`empresa`=':empresa',`precio`=':precio' WHERE id = $id");
-    $query->bindParam(':num_presupuesto', $num_presupuesto);
-    $query->bindParam(':titulo', $titulo);
-    $query->bindParam(':fecha_generacion', $fecha_generacion);
-    $query->bindParam(':empresa', $empresa);
-    $query->bindParam(':precio', $precio);
-    // $query->execute(); //se rompe con esta linea
+    $query = $conexion->prepare("UPDATE presupuestos SET  titulo= '$titulo', fecha_generacion= '$fecha_generacion', empresa= '$empresa', precio= '$precio' WHERE id = $id");
+    // $query->bindParam(':num_presupuesto', $num_presupuesto);
+    // $query->bindParam(':titulo', $titulo);
+    // $query->bindParam(':fecha_generacion', $fecha_generacion);
+    // $query->bindParam(':empresa', $empresa);
+    // $query->bindParam(':precio', $precio);
+    $query->execute(); //se rompe con esta linea
     header('Location: lista.php');
 }
 
@@ -38,7 +37,7 @@ if(isset($_POST['update'])){
 <div class=" d-flex justify-content-center align-items-center">
   <div class="mr-3">
 <h1 class="text-center">Edición de presupuestos</h1>
-<p class="text-center ">Edita los campos que necesites y generaremos un nuevo PDF</p>
+<p class="text-center ">Edita todos los campos que necesites y generaremos un nuevo PDF</p>
 </div>
 <img class="rounded-circle img-fluid imag " src="../public/assets/img/logo.jpeg" alt="" >
 </div>
@@ -56,22 +55,22 @@ if(isset($_POST['update'])){
       </div>
       <?php } ?>
       <div class="form-group col-md-2">
-          <label for="fecha">Fecha</label>
-          <input type="date" class="form-control" id="fecha" name="fecha_generacion" autofocus>
+          <label for="fecha_generacion">Fecha</label>
+          <input type="date" class="form-control " id="fecha" name="fecha_generacion" autofocus>
         </div>
       </div>
       <div class="form-row row container justify-content-md-center mt-2">
       <div class="form-group col-md-5">
-          <label for=" empresa">Empresa</label>
-          <input type="text" class="form-control" id="empresa" name="empresa" autofocus>
+          <label for="empresa">Empresa</label>
+          <input type="text" class="form-control" id="empresa" name="empresa" autofocus required>
         </div>
       <div class="form-group col-md-4">
         <label for="titulo">Título</label>
-        <input type="text" class="form-control" id="titulo" placeholder="" name="titulo" autofocus>
+        <input type="text" class="form-control" id="titulo" name="titulo" autofocus required>
       </div>
       <div class="form-group col-md-3">
           <label for=" precio">Precio</label>
-          <input type="number" class="form-control" id="precio" name="precio" autofocus>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
         </div>
       </div>
       <div class="form-row row justify-content-md-center">

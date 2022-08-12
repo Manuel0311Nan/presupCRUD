@@ -12,11 +12,10 @@ $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
 if (isset($_POST['delete'])){
     $id = $_GET['id'];
-    $query = "DELETE FROM presupuestos WHERE id = $id ";
-    $sentencia ->$conexion->prepare($query);
-    $sentencia -> execute();
+    $query =$conexion->prepare( "DELETE FROM presupuestos WHERE id = $id ");
+    $query -> execute();
 
-    if(!$result){
+    if(!$sentencia){
         die(".Query Failed");
     }
 // $_SESSION['message'] = 'Task Removed Successfully';

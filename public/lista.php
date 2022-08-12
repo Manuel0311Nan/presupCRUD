@@ -10,7 +10,7 @@ require_once(dirname(__FILE__) . "/registro.php");
 
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
-$query = "SELECT * FROM presupuestos ";
+    $query = "SELECT * FROM presupuestos ";
 $valor = $conexion -> prepare($query);
 $valor -> execute();
 $total = $valor->rowCount() + 1;
@@ -55,10 +55,10 @@ $total = $valor->rowCount() + 1;
                         <td class=" text-center"><?php echo $p['titulo']; ?></td>
                         <td class=" text-center"><?php echo $p['empresa']; ?></td>
                         <td class=" text-center"><?php echo $p['precio']; ?> €</td>
-                        <td class=" text-center"><?php echo $p['fecha_generacion']; ?></td>
+                        <td class=" text-center "><?php echo $p['fecha_generacion']; ?></td>
                         <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php"><span class="material-icons">file_open</span></a></td>
                         <td class=" text-center"> <a class="text-danger pt-2"  href="../public/edit.php?id=<?php echo $p['id'];?>"> <span class="material-icons">edit</span></a>
-                        <a name="delete" class="text-danger pt-2" target="_blank"  href="../public/delete.php?id=<?php echo $p['id'];?> "><span class="material-icons">delete</span></a></td>
+                        <a name="delete" class="text-danger pt-2"   href="../public/delete.php?id=<?php echo $p['id'];?> "><span class="material-icons">delete</span></a></td>
                     </tr>
                     <?php } ?>
             </tbody>
