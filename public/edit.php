@@ -68,30 +68,31 @@ if(isset($_POST['update'])){
         <label for="num_presupuesto">Nº Presupuesto</label>
         <input value="<?php echo $p['num_presupuesto']; ?>"  class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" readonly>
       </div>
-      <?php } ?>
+
       <div class="form-group col-md-2">
           <label for="fecha_generacion">Fecha</label>
-          <input type="date" class="form-control " id="fecha" name="fecha_generacion" autofocus>
+          <input  type="date" class="form-control " id="fecha" name="fecha_generacion" autofocus>
         </div>
       </div>
       <div class="form-row row container justify-content-md-center mt-2">
       <div class="form-group col-md-5">
           <label for="empresa">Empresa</label>
-          <input type="text" class="form-control" id="empresa" name="empresa" autofocus required>
+          <input placeholder="<?php echo $p['empresa']; ?>" type="text" class="form-control" id="empresa" name="empresa" autofocus required>
         </div>
       <div class="form-group col-md-4">
         <label for="titulo">Título</label>
-        <input type="text" class="form-control" id="titulo" name="titulo" autofocus required>
+        <input placeholder="<?php echo $p['titulo']; ?>" type="text" class="form-control" id="titulo" name="titulo" autofocus required>
       </div>
+
       <div class="form-group col-md-3">
           <label for=" precio">Precio</label>
-          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <input placeholder="<?php echo $p['precio']; ?>"  type="number" class="form-control" id="precio" name="precio" autofocus required>
         </div>
       </div>
       <div class="form-row row justify-content-md-center">
         <div class="form-group col-md-12 mt-2">
           <label class="mx-md-3" for="solicitud">Solicitud</label>
-          <textarea type="text" class="form-control " id="solicitud" name="solicitud" rows="5"> </textarea>
+          <textarea  type="text" class="form-control " id="solicitud" name="solicitud" rows="5"> </textarea>
         </div>
         <div class="form-group col-md-12 mt-2">
           <label for="solucion">Solución</label>
@@ -101,6 +102,7 @@ if(isset($_POST['update'])){
         <div class="d-flex  justify-content-center">
       <button name="update" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> EDITAR  file_open</span></button>
       </div>
+      <?php } ?>
     </form>
 </body>
 

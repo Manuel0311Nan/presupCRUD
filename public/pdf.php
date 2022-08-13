@@ -5,11 +5,23 @@ error_reporting(E_ALL);
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../src/functions.php');
 require_once(dirname(__FILE__) . '/../src/fpdf/fpdf.php');
-require_once(dirname(__FILE__) . '/../src/mailer/PHPMailer.php');
+// require_once(dirname(__FILE__) . '/../src/mailer/PHPMailer.php');
 require_once(dirname(__FILE__) . '/../src/mailer/SMTP.php');
 require_once(dirname(__FILE__) . '/../src/mailer/Exception.php');
+
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
+$query = "SELECT * FROM presupuestos ";
+$valor = $conexion -> prepare($query);
+$valor -> execute();
+if(isset($_GET['pdf'])){
+    $id = $_GET ['id'];
+    $titulo =trim($_POST['titulo']);
+    $fecha_generacion = $_POST['fecha_generacion'];
+    $empresa = trim($_POST['empresa']);
+    $precio = $_POST['precio'];
+    $solucion = $_POST['solucion'];
+    $solicitud = $_POST['solicitud'];
 
 //Creamos el archivo PDF en horizontal (L), en milímetros (mm) y con medida DIN A4
 $pdf = new FPDF('L', 'mm', 'A4');
@@ -58,5 +70,6 @@ $pdf->Output($ruta,'I');
 $query = "INSERT INTO presupuestos(num_presupuesto, titulo) VALUES(?,?)";
 $array = array($num_presupuesto, $titulo);
 $valor = doQuery($conexion, $query, $array);
-$response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf.php" . str_replace("#", "", $num_presupuesto) . ".pdf");
+$response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
 disconnectServer($conexion);
+}

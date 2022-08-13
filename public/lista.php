@@ -45,7 +45,7 @@ $total = $valor->rowCount() + 1;
         <div class="d-flex my-2 justify-content-end">
             <a href="./index.php" class="btn boton fw-bold  col-12 col-md-3 col-lg-2">GENERADOR</a>
         </div>
-        <table class="table table-striped container">
+        <table class="table col-12">
             <thead>
             <tr class=" text-dark">
                     <th class=" text-center">Presupuesto</th>
@@ -64,13 +64,13 @@ $total = $valor->rowCount() + 1;
                 <?php
                     $d = new DateTime($p["fecha_generacion"]);?>
                     <tr>
-                        <td class="fw-bold text-center"> <?php echo $p['num_presupuesto']; ?> </td>
-                        <td class=" text-center"><?php echo $p['titulo']; ?></td>
-                        <td class=" text-center"><?php echo $p['empresa']; ?></td>
-                        <td class=" text-center"><?php echo $p['precio']; ?> €</td>
-                        <td class=" text-center "><?php echo $p['fecha_generacion']; ?></td>
-                        <td class=" text-center"><a class="text-danger pt-2" target="_blank"  href="../src/edit.php"><span class="material-icons">file_open</span></a></td>
-                        <td class=" text-center"> <a class="text-danger pt-2"  href="../public/edit.php?id=<?php echo $p['id'];?>"> <span class="material-icons">edit</span></a>
+                        <td class="fw-bold  text-md-center wid"> <?php echo $p['num_presupuesto']; ?> </td>
+                        <td class=" text-center wid"><?php echo $p['titulo']; ?></td>
+                        <td class=" text-center wid"><?php echo $p['empresa']; ?></td>
+                        <td class=" text-center wid"><?php echo $p['precio']; ?> €</td>
+                        <td class=" text-center wid "><?php echo $p['fecha_generacion']; ?></td>
+                        <td class=" text-center wid"><a name="pdf" class="text-danger pt-2 pdf" target="_blank"  href="../public/pdf.php?id=<?php echo $p['id'];?>"><span class="material-icons">file_open</span></a></td>
+                        <td class=" text-center wid"> <a class="text-danger pt-2"  href="../public/edit.php?id=<?php echo $p['id'];?>"> <span class="material-icons">edit</span></a>
                         <a name="delete" class="text-danger pt-2"   href="../public/delete.php?id=<?php echo $p['id'];?> "><span class="material-icons">delete</span></a></td>
                     </tr>
                     <?php } ?>
@@ -82,7 +82,8 @@ $total = $valor->rowCount() + 1;
 </html>
 
 <script>
-$(document).ready(function() {
+$(document).ready(
+    function() {
     $('table').DataTable({
             "language": {
                 "processing": "Procesando...",
@@ -254,6 +255,7 @@ $(document).ready(function() {
                         "Sab"
                     ]
                 },
+
                 "editor": {
                     "close": "Cerrar",
                     "create": {
@@ -291,13 +293,15 @@ $(document).ready(function() {
             buttons: [{
                 extend: 'excel',
                 text: 'Exportar en Excel',
-                className: 'btn btn-success col-md-6',
+                className: 'btn btn-success fw-bold  col-12 col-md-3 col-lg-2',
                 // exportOptions: {
                 //     columns: [1,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20]
                 // }
             }],
-            "iDisplayLength": 10,
+
+            "DisplayLength": 10,
             responsive: true,
+            "autoWidth": true,
             orderCellsTop: true,
             fixedHeader: true,
             // initComplete: function() {

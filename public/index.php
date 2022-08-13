@@ -77,7 +77,7 @@ $total = $valor->rowCount() + 1;
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button action="pdf.php" id="genPDF" name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
+      <button action="pdf.php" method="GET"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
       </div>
     </form>
 </body>
@@ -96,29 +96,29 @@ var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i
 
 $("#num_presupuesto").val("#" + generateRandomString(5));
 
-$("#genPDF").click(function() {
-var fd = new FormData();
-    fd.append("action", "create_pdf");
-    $.ajax({
-                                data: fd,
-                                url: './apiController.php',
-                                method: 'POST',
-                                dataType: "json",
-                                processData: false,
-                                contentType: false,
-                                beforeSend: function() {
-                                    loading.show()
-                                }
-                            }).done(function(data) {
-                                console.log(data);
-                                loadingHide()
-                                switch (data.status) {
-                                    case 'exito':
-                                            window.open(data.result, '_blank');
-                                            window.location.reload();
-                                        break;
-                                }
-                            })
-                          })
+// $("#genPDF").click(function() {
+// var fd = new FormData();
+//     fd.append("action", "create_pdf");
+//     $.ajax({
+//                                 data: fd,
+//                                 url: './apiController.php',
+//                                 method: 'POST',
+//                                 dataType: "json",
+//                                 processData: false,
+//                                 contentType: false,
+//                                 beforeSend: function() {
+//                                     loading.show()
+//                                 }
+//                             }).done(function(data) {
+//                                 console.log(data);
+//                                 loadingHide()
+//                                 switch (data.status) {
+//                                     case 'exito':
+//                                             window.open(data.result, '_blank');
+//                                             window.location.reload();
+//                                         break;
+//                                 }
+//                             })
+//                           })
 </script>
 </html>
