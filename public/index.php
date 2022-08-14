@@ -77,7 +77,7 @@ $total = $valor->rowCount() + 1;
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button action="pdf.php" method="GET"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
+      <button id="saveOnDevice"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
       </div>
     </form>
 </body>
@@ -89,6 +89,72 @@ var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
 var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
             $("#fecha").val(hoy)
+
+            $("#saveOnDevice").click(function() {
+                var empresa = $("#empresa").val();
+                var fecha = $("#fecha").val();
+                var num_presupuesto = $("#num_presupuesto").val();
+                var titulo = $("#titulo").val();
+                var precio = $("#precio").val();
+                var solicitud = $("#solicitud").val();
+                var solucion = $("#solucion").val();
+
+                if (empresa.trim() == "" || empresa.trim() == null) {
+                    $('#empresa ~ .error').removeClass("d-none")
+                } else {
+                    $('#empresa ~ .error').addClass("d-none")
+                    if (titulo.trim() == "" || titulo.trim() == null) {
+                        $('#titulo ~ .error').removeClass("d-none")
+                    } else {
+                        $('#titulo ~ .error').addClass("d-none")
+                    if (precio.trim() == "" || precio.trim() == null) {
+                        $('#precio ~ .error').removeClass("d-none")
+                    } else {
+                        $('#precio ~ .error').addClass("d-none")
+                    if (solicitud.trim() == "" || solicitud.trim() == null) {
+                        $('#solicitud ~ .error').removeClass("d-none")
+                    } else {
+                        $('#solicitud ~ .error').addClass("d-none")
+                    if (solucion.trim() == "" || solucion.trim() == null) {
+                        $('#solucion ~ .error').removeClass("d-none")
+                    } else {
+                        $('#solucion ~ .error').addClass("d-none")
+                          var fd = new FormData();
+                            fd.append("action", "create_pdf");
+                            fd.append("empresa", empresa.trim());
+                            fd.append("fecha", fecha.trim());
+                            fd.append("num_presupuesto", num_presupuesto.trim());
+                            fd.append("titulo", titulo.trim());
+                            fd.append("precio", precio.trim());
+                            fd.append("solicitud", solicitud.trim());
+                            fd.append("solucion", solucion.trim());
+
+                            $.ajax({
+                                data: fd,
+                                url: './apiController.php',
+                                method: 'POST',
+                                dataType: "json",
+                                processData: false,
+                                contentType: false,
+                                beforeSend: function() {
+                                    loading.show()
+                                }
+                            }).done(function(data) {
+                                console.log(data);
+                                loadingHide()
+                                switch (data.status) {
+                                    case 'exito':
+                                            window.open(data.result, '_blank');
+                                            window.location.reload();
+                                        break;
+                                }
+                            })
+                          }
+                        }
+                    }
+                    }
+                    }
+            })
 
 const  generateRandomString = (num) => {
 var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i=0; i < num; i++ ) text += possible.charAt(Math.floor(Math.random() * possible.length)); return text;
