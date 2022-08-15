@@ -66,7 +66,7 @@ if(isset($_POST['update'])){
                 while($p = $valor->fetch(PDO::FETCH_ASSOC))
                 {?>
         <label for="num_presupuesto">Nº Presupuesto</label>
-        <input value="<?php echo $p['num_presupuesto']; ?>"  class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" readonly>
+        <input value="<?php echo $p['num_presupuesto']; ?>"  class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="">
       </div>
 
       <div class="form-group col-md-2">
@@ -100,7 +100,7 @@ if(isset($_POST['update'])){
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button name="update" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> EDITAR  file_open</span></button>
+      <button name="update" type="submit" class="btn btn-danger p-2 mt-2 w-100 ">EDITAR <span class="material-icons"> file_open</span></button>
       </div>
       <?php } ?>
     </form>

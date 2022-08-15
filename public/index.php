@@ -14,6 +14,7 @@ $array = array();
 $valor = doQuery($conexion, $query, $array);
 $total = $valor->rowCount() + 1;
 
+
 ?>
 <style>
       *{
@@ -46,38 +47,45 @@ $total = $valor->rowCount() + 1;
       <div class="form-group col-md-7">
         <label for="num_presupuesto">Nº Presupuesto</label>
         <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" readonly>
+        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
       <div class="form-group col-md-2">
           <label for="fecha">Fecha</label>
           <input type="date" class="form-control" id="fecha" name="fecha_generacion" readonly>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
       </div>
       <div class="form-row row container justify-content-md-center mt-2">
       <div class="form-group col-md-5">
           <label for=" empresa">Empresa</label>
           <input type="text" class="form-control" id="empresa" name="empresa" autofocus required>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
       <div class="form-group col-md-4">
         <label for="titulo">Título</label>
         <input type="text" class="form-control" id="titulo" placeholder="" name="titulo" autofocus required>
+        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
       <div class="form-group col-md-3">
           <label for=" precio">Precio</label>
           <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
       </div>
       <div class="form-row row justify-content-md-center">
         <div class="form-group col-md-12 mt-2">
           <label class="mx-md-3" for="solicitud">Solicitud</label>
           <textarea type="text" class="form-control " id="solicitud" name="solicitud" rows="5" required> </textarea>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
         <div class="form-group col-md-12 mt-2">
           <label for="solucion">Solución</label>
           <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button id="saveOnDevice"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> <span class="material-icons"> GENERAR  file_open</span></button>
+      <button id="saveOnDevice"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> GENERAR <span class="material-icons">file_open</span></button>
       </div>
     </form>
 </body>
@@ -161,30 +169,5 @@ var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i
     }
 
 $("#num_presupuesto").val("#" + generateRandomString(5));
-
-// $("#genPDF").click(function() {
-// var fd = new FormData();
-//     fd.append("action", "create_pdf");
-//     $.ajax({
-//                                 data: fd,
-//                                 url: './apiController.php',
-//                                 method: 'POST',
-//                                 dataType: "json",
-//                                 processData: false,
-//                                 contentType: false,
-//                                 beforeSend: function() {
-//                                     loading.show()
-//                                 }
-//                             }).done(function(data) {
-//                                 console.log(data);
-//                                 loadingHide()
-//                                 switch (data.status) {
-//                                     case 'exito':
-//                                             window.open(data.result, '_blank');
-//                                             window.location.reload();
-//                                         break;
-//                                 }
-//                             })
-//                           })
 </script>
 </html>

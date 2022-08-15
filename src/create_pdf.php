@@ -72,8 +72,8 @@ $ruta = "./../public/assets/pdf/" . str_replace("#", "", $num_presupuesto) . ".p
 $pdf->Output($ruta,'F');
 
 //Primero comprobamos que el número de usuarios registrados no supere los que se han contratado (NUM_USERS)
-$query = "INSERT INTO presupuestos(num_presupuesto, titulo, empresa, precio) VALUES(?,?,?,?)";
-$array = array($num_presupuesto, $titulo, $empresa, number_format($precio, 2, ',', '.') . ' €');
-$valor = doQuery($conexion, $query, $array);
-$response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
-disconnectServer($conexion);
+// $query = "INSERT INTO presupuestos(num_presupuesto, titulo, empresa, precio) VALUES(?,?,?,?)";
+// $array = array($num_presupuesto, $titulo, $empresa, number_format($precio, 2, ',', '.') . ' €');
+// $valor = doQuery($conexion, $query, $array);
+// $response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
+// disconnectServer($conexion);

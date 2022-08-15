@@ -8,12 +8,12 @@ if (isset($_POST) && isset($_POST['action']))
     switch ($_POST['action']) 
     {
         case 'create_pdf': encrypted($_POST);break;
-        case 'login': encrypted($_POST);break;
+        // case 'login': encrypted($_POST);break;
         default: echo json_encode(array("status" => "error", "result" => "Actualmente no se puede realizar la acción deseada"));
     }
 }
 
-// Función que llaman a diferentes recursos (TODAS LAS RESPUESTAS QUE VAYAN AL FROTNED DEBERÁN IR EN JSON)
+// Función que llaman a diferentes recursos (TODAS LAS RESPUESTAS QUE VAYAN AL FRONTDEBERÁN IR EN JSON)
 function encrypted($data)
 {
     $action = $data['action'];
