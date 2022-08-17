@@ -1,17 +1,23 @@
 <?php
+// require_once(dirname(__FILE__) . '/../config/config.php');
+// require_once(dirname(__FILE__) . '/functions.php');
+// require_once(dirname(__FILE__) . '/fpdf/fpdf.php');
+// require_once(dirname(__FILE__) . '/mailer/PHPMailer.php');
+// require_once(dirname(__FILE__) . '/mailer/SMTP.php');
+// require_once(dirname(__FILE__) . '/mailer/Exception.php');
 require_once(dirname(__FILE__) . '/../config/config.php');
-require_once(dirname(__FILE__) . '/functions.php');
-require_once(dirname(__FILE__) . '/fpdf/fpdf.php');
-require_once(dirname(__FILE__) . '/mailer/PHPMailer.php');
-require_once(dirname(__FILE__) . '/mailer/SMTP.php');
-require_once(dirname(__FILE__) . '/mailer/Exception.php');
+require_once(dirname(__FILE__) . '/../src/functions.php');
+require_once(dirname(__FILE__) . '/../src/fpdf/fpdf.php');
+require_once(dirname(__FILE__) . '/../src/mailer/PHPMailer.php');
+require_once(dirname(__FILE__) . '/../src/mailer/SMTP.php');
+require_once(dirname(__FILE__) . '/../src/mailer/Exception.php');
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
 define('EURO',chr(128));
 
 //Datos recibidos desde el Frontend
 $empresa = trim(strip_tags($_POST['empresa']));
-$fecha = new DateTime($_POST['fecha']);
+$fecha = new DateTime($_POST['fecha_generacion']);
 $num_presupuesto = trim(strip_tags($_POST['num_presupuesto']));
 $titulo = trim(strip_tags($_POST['titulo']));
 $precio = trim(strip_tags($_POST['precio']));
@@ -72,8 +78,8 @@ $ruta = "./../public/assets/pdf/" . str_replace("#", "", $num_presupuesto) . ".p
 $pdf->Output($ruta,'F');
 
 //Primero comprobamos que el número de usuarios registrados no supere los que se han contratado (NUM_USERS)
-// $query = "INSERT INTO presupuestos(num_presupuesto, titulo, empresa, precio) VALUES(?,?,?,?)";
-// $array = array($num_presupuesto, $titulo, $empresa, number_format($precio, 2, ',', '.') . ' €');
-// $valor = doQuery($conexion, $query, $array);
-// $response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
-// disconnectServer($conexion);
+$query = "INSERT INTO presupuestos(num_presupuesto, titulo, empresa, precio, solicitud, solucion) VALUES(?,?,?,?,?,?)";
+$array = array($num_presupuesto, $titulo, $empresa, number_format($precio, 2, ',', '.') . ' €', $solicitud, $solucion);
+$valor = doQuery($conexion, $query, $array);
+$response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
+disconnectServer($conexion);

@@ -40,7 +40,7 @@ $pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($titulo), 0 , 'C');
 
 $pdf->SetXY(null, '165');
 $pdf->SetFontSize(18);
-$pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($empresa) . utf8_decode(" · ")  . utf8_decode($num_presupuesto) .  utf8_decode(" · ") . $fecha->format("d/m/Y"), 0 , 'C');
+$pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($empresa) . utf8_decode(" · ")  . utf8_decode($num_presupuesto) .  utf8_decode(" · ") . $fecha_generacion->format("d/m/Y"), 0 , 'C');
 
 
 //Añadimos la segunda hoja, solicitud
