@@ -50,8 +50,8 @@ $total = $valor->rowCount() + 1;
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
       <div class="form-group col-md-2">
-          <label for="fecha">Fecha</label>
-          <input type="date" class="form-control" id="fecha" name="fecha_generacion" readonly>
+          <label for="fecha_generacion">Fecha</label>
+          <input type="date" class="form-control" id="fecha_generacion" name="fecha_generacion" readonly>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
       </div>
@@ -96,11 +96,11 @@ var day = ("0" + now.getDate()).slice(-2);
 var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
 var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
-            $("#fecha").val(hoy)
+            $("#fecha_generacion").val(hoy)
 
             // $("#saveOnDevice").click(function() {
             //     var empresa = $("#empresa").val();
-            //     var fecha = $("#fecha").val();
+            //     var fecha = $("#fecha_generacion").val();
             //     var num_presupuesto = $("#num_presupuesto").val();
             //     var titulo = $("#titulo").val();
             //     var precio = $("#precio").val();

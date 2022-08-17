@@ -1,10 +1,5 @@
 <?php
-// require_once(dirname(__FILE__) . '/../config/config.php');
-// require_once(dirname(__FILE__) . '/functions.php');
-// require_once(dirname(__FILE__) . '/fpdf/fpdf.php');
-// require_once(dirname(__FILE__) . '/mailer/PHPMailer.php');
-// require_once(dirname(__FILE__) . '/mailer/SMTP.php');
-// require_once(dirname(__FILE__) . '/mailer/Exception.php');
+
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../src/functions.php');
 require_once(dirname(__FILE__) . '/../src/fpdf/fpdf.php');
@@ -17,7 +12,7 @@ define('EURO',chr(128));
 
 //Datos recibidos desde el Frontend
 $empresa = trim(strip_tags($_POST['empresa']));
-$fecha = new DateTime($_POST['fecha_generacion']);
+$fecha_generacion = new DateTime($_POST['fecha_generacion']);
 $num_presupuesto = trim(strip_tags($_POST['num_presupuesto']));
 $titulo = trim(strip_tags($_POST['titulo']));
 $precio = trim(strip_tags($_POST['precio']));
@@ -44,7 +39,7 @@ $pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($titulo), 0 , 'C');
 
 $pdf->SetXY(null, '165');
 $pdf->SetFontSize(18);
-$pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($empresa) . utf8_decode(" · ")  . utf8_decode($num_presupuesto) .  utf8_decode(" · ") . $fecha->format("d/m/Y"), 0 , 'C');
+$pdf->MultiCell($pdf->GetPageWidth(), 10, utf8_decode($empresa) . utf8_decode(" · ")  . utf8_decode($num_presupuesto) .  utf8_decode(" · ") . $fecha_generacion->format("d/m/Y"), 0 , 'C');
 
 
 //Añadimos la segunda hoja, solicitud
@@ -82,4 +77,5 @@ $query = "INSERT INTO presupuestos(num_presupuesto, titulo, empresa, precio, sol
 $array = array($num_presupuesto, $titulo, $empresa, number_format($precio, 2, ',', '.') . ' €', $solicitud, $solucion);
 $valor = doQuery($conexion, $query, $array);
 $response = array("status" => "exito", "result" => "http://localhost/presupcrud/public/assets/pdf" . str_replace("#", "", $num_presupuesto) . ".pdf");
+header('Location: lista.php');
 disconnectServer($conexion);
