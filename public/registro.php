@@ -11,7 +11,7 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 // require_once('../src/create_pdf.php');
 $conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
-if(isset($_POST['crearPresupuesto'])){
+if(isset($_POST['crear_presupuesto'])){
     $num_presupuesto = trim($_POST['num_presupuesto']);
     $titulo = ucfirst(trim($_POST['titulo']));
     $fecha_generacion = $_POST['fecha_generacion'];
@@ -28,7 +28,7 @@ if(isset($_POST['crearPresupuesto'])){
     $sentencia->bindParam(':solicitud', $solicitud);
     $sentencia->bindParam(':solucion', $solucion);
     $sentencia->execute();
-header('Location: lista.php');
+    header('Location: lista.php');
 };
 
 ?>

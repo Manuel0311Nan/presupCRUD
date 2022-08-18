@@ -57,7 +57,7 @@ $total = $valor->rowCount() + 1;
       </div>
       <div class="form-row row container justify-content-md-center mt-2">
       <div class="form-group col-md-5">
-          <label for=" empresa">Empresa</label>
+          <label for="empresa">Empresa</label>
           <input type="text" class="form-control" id="empresa" name="empresa" autofocus required>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
@@ -67,7 +67,7 @@ $total = $valor->rowCount() + 1;
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
       <div class="form-group col-md-3">
-          <label for=" precio">Precio</label>
+          <label for="precio">Precio</label>
           <input type="number" class="form-control" id="precio" name="precio" autofocus required>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
@@ -85,7 +85,7 @@ $total = $valor->rowCount() + 1;
         </div>
         </div>
         <div class="d-flex justify-content-center">
-      <button id="saveOnDevice"  name="crearPresupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> GENERAR <span class="material-icons">file_open</span></button>
+      <button id="crear_presupuesto"  name="crear_presupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> GENERAR <span class="material-icons">file_open</span></button>
       </div>
     </form>
 </body>
@@ -97,7 +97,11 @@ var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
 var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
             $("#fecha_generacion").val(hoy)
-
+            
+const  generateRandomString = (num) => {
+var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i=0; i < num; i++ ) text += possible.charAt(Math.floor(Math.random() * possible.length)); return text;
+    }
+$("#num_presupuesto").val("#" + generateRandomString(5));
             // $("#saveOnDevice").click(function() {
             //     var empresa = $("#empresa").val();
             //     var fecha = $("#fecha_generacion").val();
@@ -164,10 +168,6 @@ var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
             //         }
             // })
 
-const  generateRandomString = (num) => {
-var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i=0; i < num; i++ ) text += possible.charAt(Math.floor(Math.random() * possible.length)); return text;
-    }
 
-$("#num_presupuesto").val("#" + generateRandomString(5));
 </script>
 </html>

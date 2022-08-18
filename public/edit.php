@@ -4,33 +4,8 @@ session_start();
 require_once(dirname(__FILE__) . "/../config/config.php");
 require_once(dirname(__FILE__) . "/../src/functions.php");
 require_once(dirname(__FILE__) . "/head.php");
-require_once(dirname(__FILE__) . "/registro.php");
+require_once(dirname(__FILE__) . "/edit_registr.php");
 // require_once(dirname(__FILE__) . "/parts/loading.php");
-
-
-$conexion = connectServer(SERVER, USER, PASS, DATABASE);
-$id = $_GET ['id'];
-$sql = "SELECT * FROM presupuestos WHERE id= $id";
-$array = array();
-$valor = doQuery($conexion, $sql, $array);
-
-if(isset($_POST['update'])){
-    $id = $_GET ['id'];
-    $titulo =trim($_POST['titulo']);
-    $fecha_generacion = $_POST['fecha_generacion'];
-    $empresa = trim($_POST['empresa']);
-    $precio = $_POST['precio'];
-    $solucion = $_POST['solucion'];
-    $solicitud = $_POST['solicitud'];
-    $query = $conexion->prepare("UPDATE presupuestos SET  titulo= '$titulo', fecha_generacion= '$fecha_generacion', empresa= '$empresa', precio= '$precio' WHERE id = $id");
-    // $query->bindParam(':num_presupuesto', $num_presupuesto);
-    // $query->bindParam(':titulo', $titulo);
-    // $query->bindParam(':fecha_generacion', $fecha_generacion);
-    // $query->bindParam(':empresa', $empresa);
-    // $query->bindParam(':precio', $precio);
-    $query->execute(); //se rompe con esta linea
-    header('Location: lista.php');
-}
 
 ?>
 <style>
@@ -59,7 +34,7 @@ if(isset($_POST['update'])){
 <div class="d-flex my-2 justify-content-end col-12">
             <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
         </div>
-    <form class="bg-transparent mt-4" action="edit.php?id=<?php echo  $_GET['id']; ?>"  method="POST" target="./lista.php">
+    <form class="bg-transparent mt-4" action="create_pdf.php" method="post" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">
       <div class="form-group col-md-7">
       <?php
@@ -85,8 +60,8 @@ if(isset($_POST['update'])){
       </div>
 
       <div class="form-group col-md-3">
-          <label for=" precio">Precio</label>
-          <input placeholder="<?php echo $p['precio']; ?>"  type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <label for="precio">Precio</label>
+          <input placeholder="<?php echo $p['precio']; ?>" type="number" class="form-control" id="precio" name="precio" autofocus required>
         </div>
       </div>
       <div class="form-row row justify-content-md-center">

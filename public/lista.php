@@ -68,7 +68,7 @@ $total = $valor->rowCount() + 1;
                         <td class=" text-center wid"><?php echo $p['titulo']; ?></td>
                         <td class=" text-center wid"><?php echo $p['empresa']; ?></td>
                         <td class=" text-center wid"><?php echo $p['precio']; ?></td>
-                        <td class=" text-center wid "><?php echo $d->format('d/m/Y'); ?></td> 
+                        <td class=" text-center wid "><?php echo $d->format('d-m-Y'); ?></td> 
                         <td class=" text-center wid"><a name="pdf" class="text-danger pt-2 pdf" target="_blank"  href=" ../public/assets/pdf/<?php echo str_replace("#", "", $p['num_presupuesto']) . ".pdf" ;?>"><span class="material-icons"> visibility file_open</span></a></td>
                         <td class=" text-center wid"> <a class="text-danger pt-2"  href="../public/edit.php?id=<?php echo $p['id'];?>"><span class="material-icons">edit</span></a>
                         <a name="delete" class="text-danger pt-2"   href="../public/delete.php?id=<?php echo $p['id'];?> "><span class="material-icons">delete</span></a></td>
