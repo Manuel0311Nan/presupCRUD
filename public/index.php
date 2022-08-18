@@ -14,6 +14,12 @@ $array = array();
 $valor = doQuery($conexion, $query, $array);
 $total = $valor->rowCount() + 1;
 
+while($p = $valor->fetch(PDO::FETCH_ASSOC));
+ //funciones para modificar textos
+
+// function negrita($p){
+//   $p = htmlentities?
+// };
 
 ?>
 <style>
@@ -44,10 +50,10 @@ $total = $valor->rowCount() + 1;
         </div>
     <form class="bg-transparent mt-4" action="create_pdf.php" method="post" target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">
-      <div class="form-group col-md-7">
+      <div class="form-group col-md-3">
         <label for="num_presupuesto">Nº Presupuesto</label>
-        <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" readonly>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" >
+        <span class="text-red error small d-none text-center">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
       <div class="form-group col-md-2">
           <label for="fecha_generacion">Fecha</label>
