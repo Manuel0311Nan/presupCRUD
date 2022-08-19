@@ -48,9 +48,9 @@ while($p = $valor->fetch(PDO::FETCH_ASSOC));
 <div class="d-flex my-2 justify-content-end">
             <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
         </div>
-    <form class="bg-transparent mt-4" action="create_pdf.php" method="post" target="./lista.php">
+    <form class="bg-transparent mt-4" action="create_pdf.php" method="post" to="./lista.php" target="_self">
       <div class="form-row row container justify-content-md-center align-items-center">
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-2">
         <label for="num_presupuesto">Nº Presupuesto</label>
         <input class="form-control" id="num_presupuesto" name="num_presupuesto" placeholder="" >
         <span class="text-red error small d-none text-center">Debe indicar describir en que consitirá el desarrollo</span>
@@ -58,6 +58,11 @@ while($p = $valor->fetch(PDO::FETCH_ASSOC));
       <div class="form-group col-md-2">
           <label for="fecha_generacion">Fecha</label>
           <input type="date" class="form-control" id="fecha_generacion" name="fecha_generacion" readonly>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="precio">Precio Final</label>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
       </div>
@@ -72,11 +77,6 @@ while($p = $valor->fetch(PDO::FETCH_ASSOC));
         <input type="text" class="form-control" id="titulo" placeholder="" name="titulo" autofocus required>
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
-      <div class="form-group col-md-3">
-          <label for="precio">Precio</label>
-          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
-          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-        </div>
       </div>
       <div class="form-row row justify-content-md-center">
         <div class="form-group col-md-12 mt-2">
@@ -84,18 +84,99 @@ while($p = $valor->fetch(PDO::FETCH_ASSOC));
           <textarea type="text" class="form-control " id="solicitud" name="solicitud" rows="5" required> </textarea>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
-        <div class="form-group col-md-12 mt-2">
+        </div>
+        <div class="form-row row justify-content-md-center align-items-md-center" >
+        <div class="form-group col-md-9 mt-2">
           <label for="solucion">Solución</label>
           <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
           <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
+        <div class="form-group col-md-3">
+          <label for="precio">Precio</label>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
         </div>
-        <div class="d-flex justify-content-center">
-      <button id="crear_presupuesto"  name="crear_presupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100 "> GENERAR <span class="material-icons">file_open</span></button>
+        </div>
+        <!-- <div class="d-none form-row row justify-content-md-center align-items-md-center" id="second">
+        <div class="form-group col-md-9 mt-2">
+          <label for="solucion">Solución</label>
+          <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="precio">Precio</label>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
+        </div> -->
+        <div class="d-flex justify-content-center mb-3">
+        <button
+          style="height: 45px;"
+          id="solucion_Btn"
+          type="button"
+          class="btn btn-dark my-3 p-2 mt-2 w-100"
+        >
+          Añadir solucion
+        </button>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+      <button id="crear_presupuesto"  name="crear_presupuesto" type="submit" class="btn btn-danger p-2 mt-2 w-100"> GENERAR <span class="material-icons">file_open</span></button>
       </div>
     </form>
 </body>
 <script>
+      // document.getElementById('solucion_Btn').onclick = () => sendPostMessage();
+      $('#solucion_Btn').click(function() {
+        swap()
+        window.dispatchEvent(new Event('resize'))
+        console.log('event')
+      })
+
+      let height
+      // const sendPostMessage = () => {
+      //   if (height !== document.documentElement.offsetHeight) {
+      //     height = document.documentElement.offsetHeight
+      //     window.parent.postMessage(
+      //       {
+      //         frameHeight: height
+      //       },
+      //       '*'
+      //     )
+      //     console.log(height) // check the message is being sent correctly
+      //   }
+      // }
+      // window.onload = () => sendPostMessage()
+      // window.onresize = () => sendPostMessage()
+
+      function swap () {
+        console.log($('#solucion_Btn').html(`<div class="d-none form-row row justify-content-md-center align-items-md-center" id="second">
+        <div class="form-group col-md-9 mt-2">
+          <label for="solucion">Solución</label>
+          <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="precio">Precio</label>
+          <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
+        </div>`))
+        if ($('#solucion_Btn').html() == 'Añadir solucion') {
+          console.log('yes')
+          $('#solucion_Btn').html('Eliminar solucion')
+          // $('#first').addClass('col-md-6')
+          // $('#second').addClass('col-md-6')
+          $('#second').removeClass('d-none')
+          $('#second input').attr('required', 'required')
+        } else {
+          console.log('no')
+          $('#solucion_Btn').html('Añadir solucion')
+          // $('#first').removeClass('col-md-6')
+          // $('#second').removeClass('col-md-6')
+          $('#second').addClass('d-none')
+          $('#second input').removeAttr('required')
+        }
+      }
 var now = new Date();
 
 var day = ("0" + now.getDate()).slice(-2);
@@ -103,7 +184,7 @@ var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
 var hoy =  now.getFullYear() + "-" + (month) + "-" + (day);
             $("#fecha_generacion").val(hoy)
-            
+
 const  generateRandomString = (num) => {
 var text = ""; var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; for( var i=0; i < num; i++ ) text += possible.charAt(Math.floor(Math.random() * possible.length)); return text;
     }

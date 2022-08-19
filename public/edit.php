@@ -6,7 +6,12 @@ require_once(dirname(__FILE__) . "/../src/functions.php");
 require_once(dirname(__FILE__) . "/head.php");
 require_once(dirname(__FILE__) . "/edit_registr.php");
 // require_once(dirname(__FILE__) . "/parts/loading.php");
+$conexion = connectServer(SERVER, USER, PASS, DATABASE);
 
+$id = $_GET ['id'];
+$sql = "SELECT * FROM presupuestos WHERE id= $id";
+$array = array();
+$valor = doQuery($conexion, $sql, $array);
 ?>
 <style>
       *{
@@ -34,7 +39,10 @@ require_once(dirname(__FILE__) . "/edit_registr.php");
 <div class="d-flex my-2 justify-content-end col-12">
             <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
         </div>
-    <form class="bg-transparent mt-4" action="create_pdf.php" method="post" target="./lista.php">
+    <form class="bg-transparent mt-4" 
+    action="create_pdf.php"
+     method="post" 
+     target="./lista.php">
       <div class="form-row row container justify-content-md-center align-items-center">
       <div class="form-group col-md-7">
       <?php
@@ -75,10 +83,13 @@ require_once(dirname(__FILE__) . "/edit_registr.php");
         </div>
         </div>
         <div class="d-flex  justify-content-center">
-      <button name="update" type="submit" class="btn btn-danger p-2 mt-2 w-100 ">EDITAR <span class="material-icons"> file_open</span></button>
+      <button id="update" name="update" type="submit" class="btn btn-danger p-2 mt-2 w-100 ">EDITAR <span class="material-icons"> file_open</span></button>
       </div>
       <?php } ?>
     </form>
 </body>
 
+<script>
+
+</script>
 </html>
