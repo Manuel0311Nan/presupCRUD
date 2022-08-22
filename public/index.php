@@ -88,7 +88,7 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
         <button class="col-2 col-md-1 p-2 border-dark bg-transparent text-light"><span class="material-icons">qr_code</span></button>
         <button class="col-2 col-md-1 p-2 border-dark bg-transparent text-light"><span class="material-icons">person_add_alt_1</span></button>
       </div>
-      <div class="form-group">
+      <div class="form-group py-0">
         <label class="mx-md-3" for="solicitud">Solicitud</label>
         <textarea type="text" class="form-control" id="solicitud" name="solicitud" rows="5" required> </textarea>
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
