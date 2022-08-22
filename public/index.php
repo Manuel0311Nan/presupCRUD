@@ -82,19 +82,20 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
     </div>
-    <div class="form-row row justify-content-md-center">
-      <div class="d-flex justify-content-end mt-2">
-        <button class="col-2 col-md-1 p-2 border-dark bg-transparent text-light" id="bold"><span class="material-icons ">u_turn_left</span></button>
-        <button class="col-2 col-md-1 p-2 border-dark bg-transparent text-light"><span class="material-icons">qr_code</span></button>
-        <button class="col-2 col-md-1 p-2 border-dark bg-transparent text-light"><span class="material-icons">person_add_alt_1</span></button>
-      </div>
-      <div class="form-group py-0">
-        <label class="mx-md-3" for="solicitud">Solicitud</label>
-        <textarea type="text" class="form-control" id="solicitud" name="solicitud" rows="5" required> </textarea>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      </div>
+    <div class="form-row row justify-content-md-end mt-3">
+      <form class="d-flex  justify-content-end mt-2" action="validaciones.php" method="post" >
+        <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitB" value="B">
+        <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitI" value="I">
+        <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitU" value="U">
+        
+      </form>
     </div>
-    <div class="form-row row justify-content-md-center align-items-md-center">
+    <div class="form-row row justify-content-md-end  align-items-md-end">
+    <div class="form-group py-0">
+          <label class="mx-md-3" for="solicitud">Solicitud</label>
+          <textarea type="text" class="form-control" id="solicitud" name="solicitud" rows="5" required> </textarea>
+          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        </div>
       <div class="form-group  mt-2">
         <label for="solucion">Solución</label>
         <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
@@ -102,7 +103,7 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
       </div>
       <div class="form-group ">
         <label for="precio">Precio</label>
-        <input type="number" class="form-control" id="precio" name="precio" autofocus >
+        <input type="number" class="form-control" id="precio" name="precio" autofocus>
         <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
       </div>
     </div>
@@ -111,9 +112,9 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
         Añadir solucion
       </button>
       <div class="d-flex justify-content-center mb-3">
+      </div>
     </div>
-    </div>
-    <button id="crear_presupuesto" name="crear_presupuesto"  type="submit" class="btn btn-danger p-2 mt-1 w-100"> GENERAR <span class="material-icons">file_open</span></button>
+    <button id="crear_presupuesto" name="crear_presupuesto" type="submit" class="btn btn-danger p-2 mt-1 w-100"> GENERAR <span class="material-icons">file_open</span></button>
 
   </form>
 </body>
@@ -152,7 +153,7 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
   // window.onresize = () => sendPostMessage()
 
   function swap() {
-    if($('#solucion_Btn').html() == 'Añadir solucion') {
+    if ($('#solucion_Btn').html() == 'Añadir solucion') {
       console.log('yes')
       $('#solucion_Btn').html('Eliminar solucion')
       $("#solucion_Btn").wrap(`<div class=" w-100 justify-content-md-center align-items-md-center">
@@ -177,6 +178,7 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
       $('#solucion_Btn').html('Añadir solucion')
     }
   }
+
   function swap() {
     if ($('#solucion_Btn2').html() == 'Añadir solucion') {
       console.log('yes')
@@ -201,30 +203,30 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
     } else {
       console.log('no')
       $('#solucion_Btn2').html('Añadir solucion')
-    //   $("#solucion_Btn").empty(`<div class="form-row row justify-content-md-center align-items-md-center">
-    //   <div class="form-group col-md-9 mt-2">
-    //     <label for="solucion">Solución</label>
-    //     <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
-    //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-    //   </div>
-    //   <div class="form-group col-md-3">
-    //     <label for="precio">Precio</label>
-    //     <input type="number" class="form-control" id="precio" name="precio" autofocus required>
-    //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-    //   </div>
-    // </div>
-    // <div class="d-flex justify-content-center mb-1">
-    //   <button style="height: 45px;" id="solucion_Btn" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
-    //     Añadir solucion
-    //   </button>
-    // </div`)
+      //   $("#solucion_Btn").empty(`<div class="form-row row justify-content-md-center align-items-md-center">
+      //   <div class="form-group col-md-9 mt-2">
+      //     <label for="solucion">Solución</label>
+      //     <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+      //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+      //   </div>
+      //   <div class="form-group col-md-3">
+      //     <label for="precio">Precio</label>
+      //     <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+      //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+      //   </div>
+      // </div>
+      // <div class="d-flex justify-content-center mb-1">
+      //   <button style="height: 45px;" id="solucion_Btn" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
+      //     Añadir solucion
+      //   </button>
+      // </div`)
       // $('#first').removeClass('col-md-6')
       // $('#second').removeClass('col-md-6')
       // $('#second').addClass('d-none')
       // $('#second input').removeAttr('required')
     }
   }
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   var now = new Date();
 
   var day = ("0" + now.getDate()).slice(-2);
