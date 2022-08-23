@@ -87,6 +87,9 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitB" value="B">
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitI" value="I">
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitU" value="U">
+        <!-- tinimce libreria word
+      Verificar por donde está entrando el edit
+    Cuantas soluciones necesita?-->
       </form>
     </div>
     <div class="form-row row justify-content-md-end  align-items-md-end">

@@ -43,7 +43,7 @@ $valor = doQuery($conexion, $sql, $array);
   <div class="d-flex my-2 justify-content-end col-12">
     <a href="./lista.php" class="btn boton fw-bold col-12 col-sm-4 col-lg-2">LISTADO</a>
   </div>
-  <form class="bg-transparent mt-4" action="create_pdf.php" method="post" target="./lista.php">
+  <form class="bg-transparent mt-4" action="create_pdf.php" method="post">
     <div class="form-row row container justify-content-md-center align-items-center">
       <div class="form-group col-md-2">
         <?php
@@ -94,7 +94,7 @@ $valor = doQuery($conexion, $sql, $array);
         Añadir solucion
       </button>
     </div>
-    <div class="d-flex  justify-content-center">
+    <div class="d-flex justify-content-center">
       <button id="update" name="update" type="submit" class="btn btn-danger p-2 mt-1 w-100 ">EDITAR <span class="material-icons"> file_open</span></button>
     </div>
   <?php } ?>
