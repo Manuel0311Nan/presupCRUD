@@ -83,32 +83,33 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
       </div>
     </div>
     <div class="form-row row justify-content-md-end mt-3">
-      <form class="d-flex  justify-content-end mt-2" action="validaciones.php" method="post" >
+      <form class="d-flex  justify-content-end mt-2" action="validaciones.php" method="post">
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitB" value="B">
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitI" value="I">
         <input type="button" class="col-2 col-md-1 p-2 border-dark bg-danger text-light" id="submitU" value="U">
-        
       </form>
     </div>
     <div class="form-row row justify-content-md-end  align-items-md-end">
-    <div class="form-group py-0">
-          <label class="mx-md-3" for="solicitud">Solicitud</label>
-          <textarea type="text" class="form-control" id="solicitud" name="solicitud" rows="5" required> </textarea>
-          <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-        </div>
+      <div class="form-group py-0">
+        <label class="mx-md-3" for="solicitud">Solicitud</label>
+        <textarea type="text" class="form-control" id="solicitud" name="solicitud" rows="5" required> </textarea>
+        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+      </div>
       <div class="form-group  mt-2">
         <label for="solucion">Solución</label>
         <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        <span class="text-red error small d-none">Debe indicar en que consitirá el desarrollo</span>
       </div>
       <div class="form-group ">
         <label for="precio">Precio</label>
-        <input type="number" class="form-control" id="precio" name="precio" autofocus>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+        <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+        <span class="text-red error small d-none">Debe indicar en que consitirá el desarrollo</span>
       </div>
     </div>
+    <div class=" w-100 justify-content-md-center align-items-md-center" id="addDiv">
+    </div>
     <div class="d-flex justify-content-center mb-1">
-      <button style="height: 45px;" id="solucion_Btn" type="button" onclick="swap()" class="btn btn-dark my-3 p-2 mt-2 w-100">
+      <button  id="solucion_Btn" type="button" class="btn btn-dark my-3 p-2 mt-2 w-100">
         Añadir solucion
       </button>
       <div class="d-flex justify-content-center mb-3">
@@ -118,17 +119,38 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
 
   </form>
 </body>
-<script>
+<script type="text/javascript">
+function select(){
+  $('#submitB').click(function() {
+    let html = "";
+    html+= "<b> $soluction </b>";
+})}
+
+
   $('#solucion_Btn').click(function() {
-    swap()
-    // window.dispatchEvent(new Event('resize'))
-    // console.log('event')
-  })
-  $('#solucion_Btn2').click(function() {
-    swap()
-    // window.dispatchEvent(new Event('resize'))
-    // console.log('event')
-  })
+    let html = "";
+    html += '<div class=" w-100 justify-content-md-center align-items-md-center">';
+    html += '<div class="form-group  mt-2">';
+    html += '<label for="solucion">Solución</label>';
+    html += '<textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>';
+    html += '<span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>';
+    html += '</div>';
+    html += '<div class="form-group  mb-2">';
+    html += '<label for="precio">Precio</label>';
+    html += '<input type="number" class="form-control" id="precioParcial" name="precio" autofocus required>';
+    html += '<span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="d-flex justify-content-center mb-1">';
+    html += '<button type="button" id="removeDiv" class="btn btn-dark my-3 p-2 mt-2 w-100">Borrar </button>';
+    html += '</div>';
+    html += '</div>';
+
+    $('#addDiv').append(html);
+});
+$(document).on('click', '#removeDiv', function () {
+$(this).closest('#addDiv').remove();
+});
   $('#bold').click(function() {
     bold()
 
@@ -152,80 +174,80 @@ while ($p = $valor->fetch(PDO::FETCH_ASSOC));
   // window.onload = () => sendPostMessage()
   // window.onresize = () => sendPostMessage()
 
-  function swap() {
-    if ($('#solucion_Btn').html() == 'Añadir solucion') {
-      console.log('yes')
-      $('#solucion_Btn').html('Eliminar solucion')
-      $("#solucion_Btn").wrap(`<div class=" w-100 justify-content-md-center align-items-md-center">
-      <div class="form-group  mt-2">
-        <label for="solucion">Solución</label>
-        <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      </div>
-      <div class="form-group  mb-2">
-        <label for="precio">Precio</label>
-        <input type="number" class="form-control" id="precio" name="precio" autofocus required>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center mb-1">
-      <button style="height: 45px;" id="solucion_Btn2" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
-        Añadir solucion
-      </button>
-    </div`)
-    } else {
-      console.log('no')
-      $('#solucion_Btn').html('Añadir solucion')
-    }
-  }
+  // function swap() {
+  //   if ($('#solucion_Btn').html() == 'Añadir solucion') {
+  //     console.log('yes')
+  //     $('#solucion_Btn').html('Eliminar solucion')
+  //     $("#solucion_Btn").wrap(`<div class=" w-100 justify-content-md-center align-items-md-center">
+  //     <div class="form-group  mt-2">
+  //       <label for="solucion">Solución</label>
+  //       <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+  //       <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     </div>
+  //     <div class="form-group  mb-2">
+  //       <label for="precio">Precio</label>
+  //       <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+  //       <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     </div>
+  //   </div>
+  //   <div class="d-flex justify-content-center mb-1">
+  //     <button style="height: 45px;" id="rremoveDiv" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
+  //       Borrar
+  //     </button>
+  //   </div>`)
+  //   } else {
+  //     console.log('no')
+  //     $('#solucion_Btn').html('Añadir solucion')
+  //   }
+  // }
 
-  function swap() {
-    if ($('#solucion_Btn2').html() == 'Añadir solucion') {
-      console.log('yes')
-      $('#solucion_Btn2').html('Eliminar solucion')
-      $("#solucion_Btn2").wrap(`<div class=" w-100 justify-content-md-center align-items-md-center">
-      <div class="form-group  mt-2">
-        <label for="solucion">Solución</label>
-        <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      </div>
-      <div class="form-group  mb-2">
-        <label for="precio">Precio</label>
-        <input type="number" class="form-control" id="precio" name="precio" autofocus required>
-        <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center mb-1">
-      <button style="height: 45px;" id="solucion_Btn2" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
-        Añadir solucion
-      </button>
-    </div`)
-    } else {
-      console.log('no')
-      $('#solucion_Btn2').html('Añadir solucion')
-      //   $("#solucion_Btn").empty(`<div class="form-row row justify-content-md-center align-items-md-center">
-      //   <div class="form-group col-md-9 mt-2">
-      //     <label for="solucion">Solución</label>
-      //     <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
-      //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      //   </div>
-      //   <div class="form-group col-md-3">
-      //     <label for="precio">Precio</label>
-      //     <input type="number" class="form-control" id="precio" name="precio" autofocus required>
-      //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
-      //   </div>
-      // </div>
-      // <div class="d-flex justify-content-center mb-1">
-      //   <button style="height: 45px;" id="solucion_Btn" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
-      //     Añadir solucion
-      //   </button>
-      // </div`)
-      // $('#first').removeClass('col-md-6')
-      // $('#second').removeClass('col-md-6')
-      // $('#second').addClass('d-none')
-      // $('#second input').removeAttr('required')
-    }
-  }
+  // function swap() {
+  //   if ($('#solucion_Btn2').html() == 'Añadir solucion') {
+  //     console.log('yes')
+  //     $('#solucion_Btn2').html('Eliminar solucion')
+  //     $("#solucion_Btn2").wrap(`<div class=" w-100 justify-content-md-center align-items-md-center">
+  //     <div class="form-group  mt-2">
+  //       <label for="solucion">Solución</label>
+  //       <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+  //       <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     </div>
+  //     <div class="form-group  mb-2">
+  //       <label for="precio">Precio</label>
+  //       <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+  //       <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     </div>
+  //   </div>
+  //   <div class="d-flex justify-content-center mb-1">
+  //     <button style="height: 45px;" id="solucion_Btn2" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
+  //       Añadir solucion
+  //     </button>
+  //   </div`)
+  //   } else {
+  //     console.log('no')
+  //     $('#solucion_Btn2').html('Añadir solucion')
+  //     //   $("#solucion_Btn").empty(`<div class="form-row row justify-content-md-center align-items-md-center">
+  //     //   <div class="form-group col-md-9 mt-2">
+  //     //     <label for="solucion">Solución</label>
+  //     //     <textarea type="text" class="form-control" id="solucion" name="solucion" rows="5" required> </textarea>
+  //     //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     //   </div>
+  //     //   <div class="form-group col-md-3">
+  //     //     <label for="precio">Precio</label>
+  //     //     <input type="number" class="form-control" id="precio" name="precio" autofocus required>
+  //     //     <span class="text-red error small d-none">Debe indicar describir en que consitirá el desarrollo</span>
+  //     //   </div>
+  //     // </div>
+  //     // <div class="d-flex justify-content-center mb-1">
+  //     //   <button style="height: 45px;" id="solucion_Btn" type="button" onclick="" class="btn btn-dark my-3 p-2 mt-2 w-100">
+  //     //     Añadir solucion
+  //     //   </button>
+  //     // </div`)
+  //     // $('#first').removeClass('col-md-6')
+  //     // $('#second').removeClass('col-md-6')
+  //     // $('#second').addClass('d-none')
+  //     // $('#second input').removeAttr('required')
+  //   }
+  // }
   //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   var now = new Date();
 
